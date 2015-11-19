@@ -1,0 +1,7 @@
+{
+    "Listen": "localhost:7117",
+    "FRFDomains": [
+        "freefeed.net",
+        "micropeppa.freefeed.net"
+    ]
+}
