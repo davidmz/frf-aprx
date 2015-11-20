@@ -18,7 +18,7 @@
                 inputs.each(function () {
                     var v = $.trim(this.value);
                     if (v !== "") {
-                        out.push(this.name + "=" + encodeURIComponent(v));
+                        out.push(this.name + "=" + encodeURIComponent(v).replace(/%7B%7B(\w+)%7D%7D/g, "{{$1}}"));
                     }
                 });
                 output.value = out.join("&");
