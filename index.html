@@ -1,9 +1,62 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Hi</title>
+    <meta charset="utf-8">
+    <title>FrF Bookmark Data Helper</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--suppress HtmlUnknownAttribute -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
+          integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
+          crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        $(function () {
+            var inputs = $(".input-fields input, .input-fields textarea");
+            var output = $("textarea[name='output']")[0];
+            inputs.on("input", function () {
+                var out = [];
+                inputs.each(function () {
+                    var v = $.trim(this.value);
+                    if (v !== "") {
+                        out.push(this.name + "=" + encodeURIComponent(v));
+                    }
+                });
+                output.value = out.join("&");
+            });
+        });
+    </script>
 </head>
 <body>
+<div class="container">
+    <h1>FrF Bookmark Data Helper</h1>
 
+    <h3>Input</h3>
+
+    <div class="input-fields">
+        <div class="form-group">
+            <label for="fieldTitle">Post body (required)</label>
+            <textarea class="form-control" name="title" id="fieldTitle" placeholder="Post body" rows="5"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="fieldImage">Image URL (optional)</label>
+            <input type="url" class="form-control" name="image" id="fieldImage" placeholder="Image URL">
+        </div>
+
+        <div class="form-group">
+            <label for="fieldComment">First comment text (optional)</label>
+            <textarea class="form-control" name="comment" id="fieldComment" placeholder="First comment text"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="fieldToken">Your access token (required)</label>
+            <input type="text" class="form-control" name="accessToken" id="fieldToken" placeholder="Your access token">
+        </div>
+    </div>
+
+    <h3>Output</h3>
+    <textarea class="form-control" name="output" placeholder="Empty" readonly rows="5"></textarea>
+
+</div>
 </body>
 </html>
