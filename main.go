@@ -17,6 +17,7 @@ import (
 type App struct {
 	Listen     string
 	FRFDomains []string
+	UserAgent  string
 }
 
 type H map[string]interface{}
@@ -113,6 +114,10 @@ func (a *App) Handler(w http.ResponseWriter, r *http.Request) {
 
 	if accessToken != "" {
 		req.Header.Set("X-Authentication-Token", accessToken)
+	}
+
+	if (a.UserAgent != "") {
+		req.Header.Set("User-Agent", a.UserAgent)
 	}
 
 	resp, err := http.DefaultClient.Do(req)

@@ -3,5 +3,6 @@
     "FRFDomains": [
         "freefeed.net",
         "micropeppa.freefeed.net"
-    ]
+    ],
+    "UserAgent": "frf-aprx/0.1 (mailto:USER@EXAMPLE.COM; https://github.com/davidmz/frf-aprx)"
 }
